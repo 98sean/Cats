@@ -29,8 +29,6 @@ def pick(paragraphs, select, k):
     >>> pick(ps, s, 2)
     ''
     """
-    # BEGIN PROBLEM 1
-    "*** YOUR CODE HERE ***"
     def thinning_out(paragraphs,select):
         new_list = [my_paragraph for my_paragraph in paragraphs if select(my_paragraph)] 
         return new_list
@@ -39,7 +37,6 @@ def pick(paragraphs, select, k):
         return thinning_out(paragraphs, select)[k]
     else:
         return ''
-    # END PROBLEM 1
 
 
 def about(topic):
@@ -56,8 +53,7 @@ def about(topic):
     'Nice pup.'
     """
     assert all([lower(x) == x for x in topic]), 'topics should be lowercase.'
-    # BEGIN PROBLEM 2
-    "*** YOUR CODE HERE ***"
+
     def retrun_function(my_paragraph):
         my_paragraph_list = split(lower(remove_punctuation(my_paragraph)))
 
@@ -68,7 +64,6 @@ def about(topic):
         return False
 
     return retrun_function
-    # END PROBLEM 2
 
 
 def accuracy(typed, source):
@@ -96,8 +91,7 @@ def accuracy(typed, source):
     """
     typed_words = split(typed)
     source_words = split(source)
-    # BEGIN PROBLEM 3
-    "*** YOUR CODE HERE ***"
+
     if not typed_words :
         if not source_words :
             return 100.0
@@ -117,7 +111,6 @@ def accuracy(typed, source):
             matched += 1
 
     return matched / total_typed * 100
-    # END PROBLEM 3
 
 
 def wpm(typed, elapsed):
@@ -133,10 +126,8 @@ def wpm(typed, elapsed):
     2.0
     """
     assert elapsed > 0, 'Elapsed time must be positive'
-    # BEGIN PROBLEM 4
-    "*** YOUR CODE HERE ***"
+
     return (len(typed) / 5) / (elapsed / 60.0)
-    # END PROBLEM 4
 
 
 ###########
@@ -161,8 +152,6 @@ def autocorrect(typed_word, word_list, diff_function, limit):
     >>> autocorrect("tosting", ["testing", "asking", "fasting"], first_diff, 10)
     'testing'
     """
-    # BEGIN PROBLEM 5
-    "*** YOUR CODE HERE ***"
     if typed_word in word_list:
         return typed_word
     else:
@@ -178,7 +167,6 @@ def autocorrect(typed_word, word_list, diff_function, limit):
             return result
         else:
             return typed_word
-    # END PROBLEM 5
 
 
 def feline_fixes(typed, source, limit):
@@ -203,7 +191,6 @@ def feline_fixes(typed, source, limit):
     >>> feline_fixes("rose", "hello", big_limit)   # Substitute: r->h, o->e, s->l, e->l, length difference of 1.
     5
     """
-    # BEGIN PROBLEM 6
     # using helper function
 
     #def helper_fixes(typed, source, index, iteration, limit):
@@ -233,7 +220,6 @@ def feline_fixes(typed, source, limit):
             return feline_fixes(typed[1:], source[1:], limit)
         else:
             return 1 + feline_fixes(typed[1:], source[1:], limit - 1)
-    # END PROBLEM 6
 
 
 def minimum_mewtations(start, goal, limit):
@@ -302,8 +288,6 @@ def report_progress(typed, prompt, user_id, upload):
     ID: 3 Progress: 0.2
     0.2
     """
-    # BEGIN PROBLEM 8
-    "*** YOUR CODE HERE ***"
     count = 0.0
     breaking = True
 
@@ -316,7 +300,6 @@ def report_progress(typed, prompt, user_id, upload):
     progress = count / len(prompt) 
     upload({'id': user_id, 'progress': progress})
     return progress    
-    # END PROBLEM 8
 
 
 def time_per_word(words, times_per_player):
@@ -336,8 +319,6 @@ def time_per_word(words, times_per_player):
     >>> match["times"]
     [[6, 3, 6, 2], [10, 6, 1, 2]]
     """
-    # BEGIN PROBLEM 9
-    "*** YOUR CODE HERE ***"
     times = []
 
     for i in range(len(times_per_player)):
@@ -350,7 +331,6 @@ def time_per_word(words, times_per_player):
         times[i] = inner_times
 
     return match(words, times)
-    # END PROBLEM 9
 
 
 def fastest_words(match):
@@ -370,8 +350,7 @@ def fastest_words(match):
     """
     player_indices = range(len(get_all_times(match)))  # contains an *index* for each player
     word_indices = range(len(get_all_words(match)))    # contains an *index* for each word
-    # BEGIN PROBLEM 10
-    "*** YOUR CODE HERE ***"
+    
     result = []
 
     for i in player_indices:
@@ -393,7 +372,6 @@ def fastest_words(match):
                 result[i] += [current_word]
 
     return result
-    # END PROBLEM 10
 
 
 def match(words, times):
